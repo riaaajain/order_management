@@ -1,6 +1,6 @@
 <?php
 
-include "conn.php";
+include "include/conn.php";
 
 if(isset($_POST['submit'])){
     $userName = $_POST['name'];

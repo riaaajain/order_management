@@ -3,7 +3,7 @@
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
-    include "conn.php";
+    include "include/conn.php";
 
     $query = "SELECT * FROM customer WHERE email = '$email'";
     $result = mysqli_query($conn,$query);
@@ -14,7 +14,12 @@ if(isset($_POST['submit'])){
         echo 'login sucessfull';
         session_start();
         $_SESSION['email'] = $email;
-        header('Location: order.php');
+        if($email == "admin@admin.com"){
+          header('Location: admin.php');
+        }
+        else{
+          header('Location: order.php');
+        }
     }
     // else{
     //   echo "Your password is incorrect";
